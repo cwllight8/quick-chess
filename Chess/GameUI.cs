@@ -397,7 +397,7 @@ namespace Chess
             if (openDialog.ShowDialog() == DialogResult.OK)
             {
                 ChessGame = new Game();
-                ChessGame.Reset(false);	// Reset the game board
+                ChessGame.Reset();	// Reset the game board
                 ParentForm.ChessCaptureBar.Clear();
 
                 IsRunning = true;

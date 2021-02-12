@@ -15,7 +15,7 @@ namespace Chess
 
         public string ResourceFolderPath;      // This string gcontains the resoruce folder path, where all the external resources are stored
         public bool bStartGame;		        // True when we need to start the game
-        public bool Randomize = false;
+        public bool Randomize = false;      //allows the starting positions of the first row to be randomized based on the fischer method
 
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.GroupBox groupBox2;
@@ -328,7 +328,7 @@ namespace Chess
 		private void btnStart_Click(object sender, System.EventArgs e)
 		{
 			bStartGame=true;
-            Randomize = FischerGame.Checked;
+            Randomize = FischerGame.Checked;//sets the public boolean to the value of the check box
 			this.Close();	// close the form
 		}
 

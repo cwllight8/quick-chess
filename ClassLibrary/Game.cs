@@ -218,7 +218,7 @@ namespace ChessLibrary
         }
 
 		// Reset the game board and all player status
-		public void Reset(bool FisherStart)
+		public void Reset(bool FisherStart = false)     //takes in a bool for randomization because this is where the board init is called from
 		{
 			m_MovesHistory.Clear();
 			m_RedoMovesHistory.Clear();
@@ -229,7 +229,7 @@ namespace ChessLibrary
 
             GameTurn = Side.SideType.White;	// In chess first turn is always of white
 			m_WhitePlayer.TimeStart();	// Player time starts
-			Board.Init(FisherStart);	// Initialize the board object
+			Board.Init(FisherStart);	// Initialize the board object(with a bool to determine weather or not to randomize it)
 		}
 
 		// Return back the white player reference

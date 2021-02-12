@@ -33,7 +33,7 @@ namespace ChessLibrary
 		}
 
 		// Initialize the chess board and place piece on thier initial positions
-		public void Init(bool FisherStart)
+		public void Init(bool FisherStart)//added a bool to allow for the randomized start
 		{
 			m_cells.Clear();		// Remove any existing chess cells
 
@@ -46,6 +46,7 @@ namespace ChessLibrary
 				}
             }
 
+            // if the fischer start was selected then randomize it
             if(FisherStart)
             {
 

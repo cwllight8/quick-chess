@@ -18,3 +18,4 @@ C:\Users\cole\source\repos\ProjectsInExistingCode\quick-chess\ClassLibrary\bin\D
 C:\Users\cole\source\repos\ProjectsInExistingCode\quick-chess\ClassLibrary\bin\Debug\Chessbrary.pdb
 C:\Users\cole\source\repos\ProjectsInExistingCode\quick-chess\ClassLibrary\obj\Debug\Chessbrary.dll
 C:\Users\cole\source\repos\ProjectsInExistingCode\quick-chess\ClassLibrary\obj\Debug\Chessbrary.pdb
+C:\Users\cole\source\repos\ProjectsInExistingCode\quick-chess\ClassLibrary\obj\Debug\ChessLibrary.csprojAssemblyReference.cache
