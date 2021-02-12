@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections;
+using System.Linq;
 using System.Xml;
 
 namespace ChessLibrary
@@ -43,29 +44,120 @@ namespace ChessLibrary
 					m_cells.Add(new Cell(row,col));	// Initialize and add the new chess cell
 				}
 
-			// Now setup the board for black side
-			m_cells["a1"].piece = new Piece(Piece.PieceType.Rook,m_BlackSide);
-			m_cells["h1"].piece = new Piece(Piece.PieceType.Rook,m_BlackSide);
-			m_cells["b1"].piece = new Piece(Piece.PieceType.Knight,m_BlackSide);
-			m_cells["g1"].piece = new Piece(Piece.PieceType.Knight,m_BlackSide);
-			m_cells["c1"].piece = new Piece(Piece.PieceType.Bishop,m_BlackSide);
-			m_cells["f1"].piece = new Piece(Piece.PieceType.Bishop,m_BlackSide);
-			m_cells["e1"].piece = new Piece(Piece.PieceType.King,m_BlackSide);
-			m_cells["d1"].piece = new Piece(Piece.PieceType.Queen,m_BlackSide);
+			Randomize();
+			//// Now setup the board for black side
+			//m_cells["a1"].piece = new Piece(Piece.PieceType.Rook,m_BlackSide);
+			//m_cells["h1"].piece = new Piece(Piece.PieceType.Rook,m_BlackSide);
+			//m_cells["b1"].piece = new Piece(Piece.PieceType.Knight,m_BlackSide);
+			//m_cells["g1"].piece = new Piece(Piece.PieceType.Knight,m_BlackSide);
+			//m_cells["c1"].piece = new Piece(Piece.PieceType.Bishop,m_BlackSide);
+			//m_cells["f1"].piece = new Piece(Piece.PieceType.Bishop,m_BlackSide);
+			//m_cells["e1"].piece = new Piece(Piece.PieceType.King,m_BlackSide);
+			//m_cells["d1"].piece = new Piece(Piece.PieceType.Queen,m_BlackSide);
 			for (int col=1; col<=8; col++)
 				m_cells[2, col].piece = new Piece(Piece.PieceType.Pawn,m_BlackSide);
 
-			// Now setup the board for white side
-			m_cells["a8"].piece = new Piece(Piece.PieceType.Rook,m_WhiteSide);
-			m_cells["h8"].piece = new Piece(Piece.PieceType.Rook,m_WhiteSide);
-			m_cells["b8"].piece = new Piece(Piece.PieceType.Knight,m_WhiteSide);
-			m_cells["g8"].piece = new Piece(Piece.PieceType.Knight,m_WhiteSide);
-			m_cells["c8"].piece = new Piece(Piece.PieceType.Bishop,m_WhiteSide);
-			m_cells["f8"].piece = new Piece(Piece.PieceType.Bishop,m_WhiteSide);
-			m_cells["e8"].piece = new Piece(Piece.PieceType.King,m_WhiteSide);
-			m_cells["d8"].piece = new Piece(Piece.PieceType.Queen,m_WhiteSide);
+			//// Now setup the board for white side
+			//m_cells["a8"].piece = new Piece(Piece.PieceType.Rook,m_WhiteSide);
+			//m_cells["h8"].piece = new Piece(Piece.PieceType.Rook,m_WhiteSide);
+			//m_cells["b8"].piece = new Piece(Piece.PieceType.Knight,m_WhiteSide);
+			//m_cells["g8"].piece = new Piece(Piece.PieceType.Knight,m_WhiteSide);
+			//m_cells["c8"].piece = new Piece(Piece.PieceType.Bishop,m_WhiteSide);
+			//m_cells["f8"].piece = new Piece(Piece.PieceType.Bishop,m_WhiteSide);
+			//m_cells["e8"].piece = new Piece(Piece.PieceType.King,m_WhiteSide);
+			//m_cells["d8"].piece = new Piece(Piece.PieceType.Queen,m_WhiteSide);
 			for (int col=1; col<=8; col++)
 				m_cells[7, col].piece = new Piece(Piece.PieceType.Pawn,m_WhiteSide);
+		}
+
+		public void Randomize()
+        {
+			int random = 0;
+			Piece.PieceType[] placedPieces = new Piece.PieceType[8] 
+			{ 
+				Piece.PieceType.Empty, 
+				Piece.PieceType.Empty, 
+				Piece.PieceType.Empty, 
+				Piece.PieceType.Empty, 
+				Piece.PieceType.Empty, 
+				Piece.PieceType.Empty, 
+				Piece.PieceType.Empty, 
+				Piece.PieceType.Empty 
+			};
+
+			Random rand = new Random();
+
+            //Place Rooks (Cannot be right beside eachother or on same square)
+            random = rand.Next(0, 8);
+            placedPieces[random] = Piece.PieceType.Rook;
+
+			int rook1pos = random;
+			do
+			{
+				random = rand.Next(0, 8);
+			}
+			while (placedPieces[random] != Piece.PieceType.Empty || Math.Abs(rook1pos - random) <= 1);
+            placedPieces[random] = Piece.PieceType.Rook;
+
+            //Find the bounds for where king must be in between
+            int lowerRook = (rook1pos < random) ? rook1pos : random;
+            int upperRook = (rook1pos > random) ? rook1pos : random;
+
+            //Place king
+            placedPieces[rand.Next(lowerRook + 1, upperRook)] = Piece.PieceType.King;
+
+			//Place bishop 1
+			do
+			{
+				random = rand.Next(0, 7);
+			}
+			while (random % 2 == 1 || placedPieces[random] != Piece.PieceType.Empty); //if odd AND if not empty
+			placedPieces[random] = Piece.PieceType.Bishop;
+
+			//Place bishop 2
+			do
+			{
+				random = rand.Next(0, 7);
+			}
+			while (random % 2 == 0 || placedPieces[random] != Piece.PieceType.Empty);
+			placedPieces[random] = Piece.PieceType.Bishop;
+
+			//Place queen
+			do
+			{
+				random = rand.Next(0, 7);
+			}
+			while (placedPieces[random] != Piece.PieceType.Empty);
+			placedPieces[random] = Piece.PieceType.Queen;
+
+			//Place knights
+			for(int i = 0; i < placedPieces.Length; i++)
+            {
+				if(placedPieces[i] == Piece.PieceType.Empty)
+                {
+					placedPieces[i] = Piece.PieceType.Knight;
+                }
+			}
+
+			//Initialize black side
+			char c = 'a';
+			foreach(Piece.PieceType piece in placedPieces)
+            {
+				//int.TryParse('a', out int parsed);
+				//char c = (char)((int)'a' + i);
+				m_cells[c.ToString() + 1].piece = new Piece(piece, m_BlackSide);
+				c++;
+			}
+
+			//Initialize white side
+			c = 'a';
+			foreach (Piece.PieceType piece in placedPieces)
+			{
+				//int.TryParse('a', out int parsed);
+				//char c = (char)((int)'a' + i);
+				m_cells[c.ToString() + 8].piece = new Piece(piece, m_WhiteSide);
+				c++;
+			}
 		}
 
 		// get the new item by rew and column
