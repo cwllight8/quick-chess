@@ -32,10 +32,10 @@ namespace Chess
 		public System.Windows.Forms.RadioButton PlayerLevel3;
 		public System.Windows.Forms.RadioButton PlayerLevel2;
 		public System.Windows.Forms.RadioButton PlayerLevel1;
-        public RadioButton FischerGame;
 		public System.Windows.Forms.TextBox BlackPlayerName;
 		public System.Windows.Forms.TextBox WhitePlayerName;
 		public System.Windows.Forms.PictureBox WhitePlayerImage;
+        private CheckBox FischerGame;
 
         /// <summary>
         /// Required designer variable.
@@ -94,7 +94,7 @@ namespace Chess
             this.WhitePlayerName = new System.Windows.Forms.TextBox();
             this.WhitePlayerImage = new System.Windows.Forms.PictureBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.FischerGame = new System.Windows.Forms.RadioButton();
+            this.FischerGame = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -268,7 +268,6 @@ namespace Chess
             this.WhitePlayerImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.WhitePlayerImage.TabIndex = 1;
             this.WhitePlayerImage.TabStop = false;
-
             // 
             // groupBox5
             // 
@@ -280,18 +279,16 @@ namespace Chess
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Fischer Start";
-            //this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
-            // radioButton4
+            // checkBox1
             // 
-            this.FischerGame.Checked = true;
-            this.FischerGame.Location = new System.Drawing.Point(11, 19);
-            this.FischerGame.Name = "radioButton4";
-            this.FischerGame.Size = new System.Drawing.Size(139, 20);
+            this.FischerGame.AutoSize = true;
+            this.FischerGame.Location = new System.Drawing.Point(14, 20);
+            this.FischerGame.Name = "checkBox1";
+            this.FischerGame.Size = new System.Drawing.Size(80, 17);
             this.FischerGame.TabIndex = 0;
-            this.FischerGame.TabStop = true;
-            this.FischerGame.Text = "Beginner";
-            //this.FischerGame.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            this.FischerGame.Text = "Fischer Start";
+            this.FischerGame.UseVisualStyleBackColor = true;
             // 
             // NewGame
             // 
@@ -322,6 +319,7 @@ namespace Chess
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WhitePlayerImage)).EndInit();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
 		}
