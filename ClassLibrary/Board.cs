@@ -32,7 +32,7 @@ namespace ChessLibrary
 		}
 
 		// Initialize the chess board and place piece on thier initial positions
-		public void Init()
+		public void Init(bool FisherStart)
 		{
 			m_cells.Clear();		// Remove any existing chess cells
 

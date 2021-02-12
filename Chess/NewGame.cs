@@ -15,11 +15,13 @@ namespace Chess
 
         public string ResourceFolderPath;      // This string gcontains the resoruce folder path, where all the external resources are stored
         public bool bStartGame;		        // True when we need to start the game
+        public bool Randomize = false;
 
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.GroupBox groupBox4;
+        private GroupBox groupBox5;
 		private System.Windows.Forms.Button btnStart;
 		private System.Windows.Forms.Button btnCancel;
 
@@ -30,13 +32,15 @@ namespace Chess
 		public System.Windows.Forms.RadioButton PlayerLevel3;
 		public System.Windows.Forms.RadioButton PlayerLevel2;
 		public System.Windows.Forms.RadioButton PlayerLevel1;
+        public RadioButton FischerGame;
 		public System.Windows.Forms.TextBox BlackPlayerName;
 		public System.Windows.Forms.TextBox WhitePlayerName;
 		public System.Windows.Forms.PictureBox WhitePlayerImage;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
 
 		public NewGame()
 		{
@@ -89,12 +93,15 @@ namespace Chess
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.WhitePlayerName = new System.Windows.Forms.TextBox();
             this.WhitePlayerImage = new System.Windows.Forms.PictureBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.FischerGame = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BlackPlayerImage)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WhitePlayerImage)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -261,12 +268,37 @@ namespace Chess
             this.WhitePlayerImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.WhitePlayerImage.TabIndex = 1;
             this.WhitePlayerImage.TabStop = false;
+
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox5.Controls.Add(this.FischerGame);
+            this.groupBox5.Location = new System.Drawing.Point(24, 222);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(160, 50);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Fischer Start";
+            //this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
+            // 
+            // radioButton4
+            // 
+            this.FischerGame.Checked = true;
+            this.FischerGame.Location = new System.Drawing.Point(11, 19);
+            this.FischerGame.Name = "radioButton4";
+            this.FischerGame.Size = new System.Drawing.Size(139, 20);
+            this.FischerGame.TabIndex = 0;
+            this.FischerGame.TabStop = true;
+            this.FischerGame.Text = "Beginner";
+            //this.FischerGame.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // NewGame
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(374, 284);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnStart);
@@ -289,6 +321,7 @@ namespace Chess
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WhitePlayerImage)).EndInit();
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
@@ -297,6 +330,7 @@ namespace Chess
 		private void btnStart_Click(object sender, System.EventArgs e)
 		{
 			bStartGame=true;
+            Randomize = FischerGame.Checked;
 			this.Close();	// close the form
 		}
 
@@ -336,5 +370,6 @@ namespace Chess
         {
             (sender as TextBox).Select(0, (sender as TextBox).Text.Length);
         }
-	}
+
+    }
 }
