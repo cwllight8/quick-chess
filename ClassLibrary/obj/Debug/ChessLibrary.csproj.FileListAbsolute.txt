@@ -13,3 +13,9 @@ C:\Users\cole\source\repos\ProjectsInExistingCode\quick-chess\ClassLibrary\bin\D
 C:\Users\cole\source\repos\ProjectsInExistingCode\quick-chess\ClassLibrary\obj\Debug\ChessLibrary.csprojAssemblyReference.cache
 C:\Users\cole\source\repos\ProjectsInExistingCode\quick-chess\ClassLibrary\obj\Debug\Chessbrary.dll
 C:\Users\cole\source\repos\ProjectsInExistingCode\quick-chess\ClassLibrary\obj\Debug\Chessbrary.pdb
+C:\Users\vlhow\Documents\GitHub\quick-chess\ClassLibrary\bin\Debug\Chessbrary.dll
+C:\Users\vlhow\Documents\GitHub\quick-chess\ClassLibrary\bin\Debug\Chessbrary.pdb
+C:\Users\vlhow\Documents\GitHub\quick-chess\ClassLibrary\obj\Debug\ChessLibrary.csprojAssemblyReference.cache
+C:\Users\vlhow\Documents\GitHub\quick-chess\ClassLibrary\obj\Debug\ChessLibrary.csproj.CoreCompileInputs.cache
+C:\Users\vlhow\Documents\GitHub\quick-chess\ClassLibrary\obj\Debug\Chessbrary.dll
+C:\Users\vlhow\Documents\GitHub\quick-chess\ClassLibrary\obj\Debug\Chessbrary.pdb
